@@ -1,7 +1,8 @@
 import cv2
 import numpy as np
 
-img = cv2.imread(r"C:\Users\Halima Mohmed\Downloads\OEE_OMR\completedForms\14-7-20AM\5.jpg")
+imgPath = r"C:\Users\ismail.mohammed\TempScripts\manualOEE_OMR\OEE_forms\v1.6_TEMPLATE.jpg"
+img = cv2.imread(imgPath)
 
 # apply rotations, resizing etc
 imgResize = cv2.resize(img, dsize=None, fx=0.4, fy=0.4)
@@ -38,6 +39,18 @@ for c in contours:
 for cent in cornerCenters:
     print(cent)
 
+#find circles using hough circles?
+circles = cv2.HoughCircles(thresh,cv2.HOUGH_GRADIENT,1,50,
+                            param1=50,param2=30,minRadius=5,maxRadius=50)
+
+circles = np.uint16(np.around(circles))
+for i in circles[0,:]:
+    # draw the outer circle
+    cv2.circle(imgRotate,(i[0],i[1]),i[2],(0,255,0),2)
+    # draw the center of the circle
+    cv2.circle(imgRotate,(i[0],i[1]),2,(0,0,255),3)
+
+cv2.imshow("imgCircles", imgRotate)
 cv2.imshow("imgThresh", thresh)
 cv2.imshow("imgBlank", imgBlank)
 cv2.waitKey(0)

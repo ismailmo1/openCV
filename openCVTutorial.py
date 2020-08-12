@@ -1,7 +1,8 @@
 import cv2
 import numpy as np
 
-img = cv2.imread(r"C:\Users\Halima Mohmed\Downloads\OEE_OMR\completedForms\28-7-20\12-28-7-20.jpg")
+imgPath = r"C:\Users\ismail.mohammed\TempScripts\manualOEE_OMR\OEE_forms\v1.6_TEMPLATE.jpg"
+img = cv2.imread(imgPath)
 imgSmall = cv2.resize(img,None, fx= 0.3, fy=0.3)
 
 imgGray = cv2.cvtColor(imgSmall, cv2.COLOR_BGR2GRAY)
