@@ -23,4 +23,4 @@ cv2.imshow("imgCanny", imgCanny)
 cv2.imshow("imgBlank", imgBlank)
 cv2.imshow("imgThresh", imgThresh)
 
-cv2.waitKey(0)
+cv2.waitKey(10000000)
